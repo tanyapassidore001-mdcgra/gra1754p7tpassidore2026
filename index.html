@@ -35,7 +35,6 @@
       color: var(--white);
     }
 
-    /* ── Inoperable back link ── */
     .back-link {
       display: block;
       padding: 10px 16px 0;
@@ -47,9 +46,6 @@
       -webkit-user-select: none;
     }
 
-    /* ════════════════════════════
-       MOBILE — image top, form below
-    ════════════════════════════ */
     .hero-image {
       width: 100%;
       height: 260px;
@@ -71,7 +67,6 @@
       padding: 16px 20px 40px;
     }
 
-    /* Heading */
     .heading-group {
       text-align: center;
       margin-bottom: 20px;
@@ -94,7 +89,6 @@
       font-family: Georgia, serif;
     }
 
-    /* Error */
     .form-error {
       background-color: rgba(220, 53, 69, 0.18);
       border: 1px solid rgba(220, 53, 69, 0.5);
@@ -110,7 +104,6 @@
       display: block;
     }
 
-    /* Info blurb */
     .info-text {
       font-size: 13px;
       line-height: 1.55;
@@ -122,7 +115,6 @@
       font-weight: 700;
     }
 
-    /* Field groups */
     .field-group {
       margin-bottom: 16px;
     }
@@ -135,7 +127,6 @@
       margin-bottom: 6px;
     }
 
-    /* Salutation + First Name */
     .sal-row {
       display: flex;
       gap: 12px;
@@ -149,7 +140,6 @@
       flex: 1;
     }
 
-    /* DOB */
     .dob-row {
       display: flex;
       align-items: center;
@@ -168,7 +158,6 @@
       color: var(--white);
     }
 
-    /* Inputs */
     input[type="text"],
     input[type="tel"],
     input[type="email"],
@@ -204,7 +193,6 @@
       box-shadow: 0 0 14px rgba(94, 196, 212, 0.4);
     }
 
-    /* Terms checkbox */
     .terms-row {
       display: flex;
       align-items: flex-start;
@@ -248,7 +236,6 @@
       -webkit-user-select: text;
     }
 
-    /* Submit */
     .submit-row {
       text-align: right;
       margin-top: 16px;
@@ -278,7 +265,6 @@
       transform: scale(0.98);
     }
 
-    /* Footer */
     .page-footer {
       margin-top: 28px;
       padding-top: 14px;
@@ -291,9 +277,6 @@
       color: rgba(255, 255, 255, 0.7);
     }
 
-    /* ════════════════════════════
-       TABLET  min-width: 50em
-    ════════════════════════════ */
     @media (min-width: 50em) {
       .hero-image {
         height: 340px;
@@ -331,14 +314,10 @@
       }
     }
 
-    /* Hide laptop-only image panel on mobile + tablet */
     .image-panel {
       display: none;
     }
 
-    /* ════════════════════════════
-       LAPTOP  min-width: 100em
-    ════════════════════════════ */
     @media (min-width: 100em) {
       .hero-image {
         display: none;
@@ -390,7 +369,6 @@
         max-width: 280px;
       }
 
-      /* 2-col form grid */
       .form-columns {
         display: table;
         table-layout: fixed;
@@ -430,20 +408,16 @@
 
   <span class="back-link">&lt; Back</span>
 
-  <!-- Hero image: mobile + tablet -->
   <div class="hero-image">
     <img src="images/contact-tablet.png" alt="A finger touching a watery surface">
   </div>
 
-  <!-- Laptop wrapper -->
   <div class="page-layout">
 
-    <!-- Left image panel: laptop only -->
     <div class="image-panel">
       <img src="images/contact-tablet.png" alt="A finger touching a watery surface">
     </div>
 
-    <!-- Form panel -->
     <div class="form-panel">
 
       <div class="heading-group">
@@ -458,7 +432,6 @@
 
         <div class="form-columns">
 
-          <!-- LEFT column -->
           <div class="col-left">
 
             <div class="field-group">
@@ -506,9 +479,8 @@
               <input type="tel" name="phone" id="phone" placeholder="Enter Phone Number">
             </div>
 
-          </div><!-- /.col-left -->
+          </div>
 
-          <!-- RIGHT column -->
           <div class="col-right">
 
             <div class="field-group">
@@ -537,11 +509,10 @@
               <input type="text" name="zip_code" id="zip_code" placeholder="Enter Zip Code" maxlength="10">
             </div>
 
-          </div><!-- /.col-right -->
+          </div>
 
-        </div><!-- /.form-columns -->
+        </div>
 
-        <!-- Terms checkbox -->
         <div class="terms-row">
           <input type="checkbox" name="agree_terms" id="agree_terms">
           <label class="terms-label" for="agree_terms">
@@ -565,8 +536,8 @@
           similar product category.</p>
       </footer>
 
-    </div><!-- /.form-panel -->
-  </div><!-- /.page-layout -->
+    </div>
+  </div>
 
   <script>
     document.getElementById('contactForm').addEventListener('submit', function (e) {
@@ -576,7 +547,6 @@
       errorBox.classList.remove('visible');
       errorBox.textContent = '';
 
-      // Grab values
       const firstName = document.getElementById('first_name').value.trim();
       const lastName = document.getElementById('last_name').value.trim();
       const dobMm = document.getElementById('dob_mm').value.trim();
@@ -589,7 +559,6 @@
       const zipCode = document.getElementById('zip_code').value.trim();
       const agreed = document.getElementById('agree_terms').checked;
 
-      // Validation
       if (!firstName) {
         showError('Please enter your first name.'); return;
       }
@@ -618,7 +587,6 @@
         showError('You must agree to the Terms before submitting.'); return;
       }
 
-      // All good — go to confirmation page
       window.location.href = 'confirmation.html';
     });
 
