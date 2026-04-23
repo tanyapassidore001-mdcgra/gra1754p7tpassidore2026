@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello! &ndash; Contact Us</title>
+  <style>
+    :root {
+      --teal-dark: #002a30;
+      --teal-mid: #004d5a;
+      --teal-light: #5ec4d4;
+      --teal-glow: #123340;
+      --white: #ffffff;
+      --text-dark: #1a1a1a;
+      --text-muted: #888888;
+      --input-bg: rgba(255, 255, 255, 0.92);
+      --radius-input: 10px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--teal-mid);
+      color: var(--white);
+    }
+
+    /* ── Inoperable back link ── */
+    .back-link {
+      display: block;
+      padding: 10px 16px 0;
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: default;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* ════════════════════════════
+       MOBILE — image top, form below
+    ════════════════════════════ */
+    .hero-image {
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+      display: block;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+
+    .form-panel {
+      width: 100%;
+      background-color: var(--teal-mid);
+      padding: 16px 20px 40px;
+    }
+
+    /* Heading */
+    .heading-group {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .heading-group .logo-img {
+      max-width: 260px;
+      width: 70%;
+      height: auto;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .heading-group h2 {
+      font-size: clamp(12px, 3vw, 16px);
+      font-weight: 400;
+      color: var(--white);
+      font-variant: small-caps;
+      letter-spacing: 1px;
+      font-family: Georgia, serif;
+    }
+
+    /* Error */
+    .form-error {
+      background-color: rgba(220, 53, 69, 0.18);
+      border: 1px solid rgba(220, 53, 69, 0.5);
+      color: #ff8a95;
+      padding: 10px 14px;
+      border-radius: var(--radius-input);
+      font-size: 13px;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    .form-error.visible {
+      display: block;
+    }
+
+    /* Info blurb */
+    .info-text {
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .info-text strong {
+      font-weight: 700;
+    }
+
+    /* Field groups */
+    .field-group {
+      margin-bottom: 16px;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    /* Salutation + First Name */
+    .sal-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .sal-row .sal-col {
+      flex: 0 0 96px;
+    }
+
+    .sal-row .name-col {
+      flex: 1;
+    }
+
+    /* DOB */
+    .dob-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dob-row input {
+      flex: 0 0 72px !important;
+      width: 72px !important;
+      text-align: center;
+    }
+
+    .dob-sep {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--white);
+    }
+
+    /* Inputs */
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select {
+      display: block;
+      width: 100%;
+      height: 52px;
+      background-color: var(--input-bg);
+      color: var(--text-dark);
+      border: 2px solid transparent;
+      border-radius: var(--radius-input);
+      padding: 0 14px;
+      font-size: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+      outline: none;
+      -webkit-appearance: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input::placeholder {
+      color: var(--text-muted);
+    }
+
+    input:hover,
+    select:hover {
+      border-color: var(--teal-light);
+      box-shadow: 0 0 10px rgba(94, 196, 212, 0.3);
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--teal-light);
+      box-shadow: 0 0 14px rgba(94, 196, 212, 0.4);
+    }
+
+    /* Terms checkbox */
+    .terms-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 20px;
+      margin-bottom: 4px;
+    }
+
+    .terms-row input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--teal-light);
+      display: inline-block;
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      border-radius: 4px;
+    }
+
+    .terms-row input[type="checkbox"]:hover,
+    .terms-row input[type="checkbox"]:focus {
+      border: none;
+      box-shadow: none;
+    }
+
+    .terms-label {
+      font-size: 12px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .terms-word {
+      font-weight: 700;
+      color: var(--teal-light);
+      cursor: text;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+
+    /* Submit */
+    .submit-row {
+      text-align: right;
+      margin-top: 16px;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      padding: 12px 40px;
+      background-color: var(--text-dark);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      border: 2px solid transparent;
+      border-radius: var(--radius-input);
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    }
+
+    .submit-btn:hover {
+      border-color: var(--teal-light);
+      box-shadow: 0 0 14px rgba(94, 196, 212, 0.4);
+      background-color: var(--teal-glow);
+    }
+
+    .submit-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 28px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .page-footer p {
+      font-size: 9px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ════════════════════════════
+       TABLET  min-width: 50em
+    ════════════════════════════ */
+    @media (min-width: 50em) {
+      .hero-image {
+        height: 340px;
+      }
+
+      .back-link {
+        padding: 12px 48px 0;
+      }
+
+      .form-panel {
+        padding: 24px 48px 56px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .heading-group .logo-img {
+        max-width: 300px;
+      }
+
+      .heading-group h2 {
+        font-size: 20px;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"],
+      select {
+        height: 56px;
+        font-size: 15px;
+      }
+
+      .dob-row input {
+        flex: 0 0 80px !important;
+        width: 80px !important;
+      }
+    }
+
+    /* Hide laptop-only image panel on mobile + tablet */
+    .image-panel {
+      display: none;
+    }
+
+    /* ════════════════════════════
+       LAPTOP  min-width: 100em
+    ════════════════════════════ */
+    @media (min-width: 100em) {
+      .hero-image {
+        display: none;
+      }
+
+      .page-layout {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      .image-panel {
+        display: block;
+        flex: 0 0 38%;
+        position: relative;
+        overflow: hidden;
+        background-color: var(--teal-dark);
+      }
+
+      .image-panel img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+
+      .form-panel {
+        flex: 1;
+        max-width: 100%;
+        background-color: var(--teal-mid);
+        padding: 12px 52px 32px 40px;
+        overflow-y: auto;
+        margin: 0;
+      }
+
+      .back-link {
+        padding: 0 0 4px;
+      }
+
+      .heading-group {
+        text-align: center;
+        margin-bottom: 16px;
+      }
+
+      .heading-group .logo-img {
+        max-width: 280px;
+      }
+
+      /* 2-col form grid */
+      .form-columns {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+      }
+
+      .col-left {
+        display: table-cell;
+        width: 52%;
+        vertical-align: top;
+        padding-right: 32px;
+      }
+
+      .col-right {
+        display: table-cell;
+        width: 48%;
+        vertical-align: top;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"],
+      select {
+        height: 44px;
+        font-size: 13px;
+      }
+
+      .dob-row input {
+        flex: 0 0 68px !important;
+        width: 68px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <span class="back-link">&lt; Back</span>
+
+  <!-- Hero image: mobile + tablet -->
+  <div class="hero-image">
+    <img src="images/contact-tablet.png" alt="A finger touching a watery surface">
+  </div>
+
+  <!-- Laptop wrapper -->
+  <div class="page-layout">
+
+    <!-- Left image panel: laptop only -->
+    <div class="image-panel">
+      <img src="images/contact-tablet.png" alt="A finger touching a watery surface">
+    </div>
+
+    <!-- Form panel -->
+    <div class="form-panel">
+
+      <div class="heading-group">
+        <img class="logo-img" src="images/hello.png" alt="HeLLo!">
+        <h2>Invitation Based offering</h2>
+		  
+      </div>
+
+      <div class="form-error" id="formError"></div>
+
+      <form id="contactForm" novalidate>
+
+        <div class="form-columns">
+
+          <!-- LEFT column -->
+          <div class="col-left">
+
+            <div class="field-group">
+              <div class="sal-row">
+                <div class="sal-col">
+                  <label for="salutation">Salutation*</label>
+                  <select name="salutation" id="salutation">
+                    <option value="" selected>--</option>
+                    <option value="Mr.">Mr.</option>
+                    <option value="Ms.">Ms.</option>
+                    <option value="Mrs.">Mrs.</option>
+                    <option value="Miss">Miss</option>
+                    <option value="Mx.">Mx.</option>
+                  </select>
+                </div>
+                <div class="name-col">
+                  <label for="first_name">First Name*</label>
+                  <input type="text" name="first_name" id="first_name" placeholder="Enter Name">
+                </div>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="last_name">Last Name*</label>
+              <input type="text" name="last_name" id="last_name" placeholder="Enter Last Name">
+            </div>
+
+            <p class="info-text">
+              Applicants must be eligible, available, and prepared to fulfill all requirements as determined at a later stage. Eligible participants must be able to proceed without restriction and accept all outcomes associated with participation. Applicants acknowledge that all outcomes are final and that the entity bear no liabilities.
+            </p>
+
+            <div class="field-group">
+              <label>Date of Birth*</label>
+              <div class="dob-row">
+                <input type="text" name="dob_mm" id="dob_mm" placeholder="MM" maxlength="2">
+                <span class="dob-sep">/</span>
+                <input type="text" name="dob_dd" id="dob_dd" placeholder="DD" maxlength="2">
+                <span class="dob-sep">/</span>
+                <input type="text" name="dob_yy" id="dob_yy" placeholder="YY" maxlength="2">
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="phone">Primary Phone Number*</label>
+              <input type="tel" name="phone" id="phone" placeholder="Enter Phone Number">
+            </div>
+
+          </div><!-- /.col-left -->
+
+          <!-- RIGHT column -->
+          <div class="col-right">
+
+            <div class="field-group">
+              <label for="address1">Street Address*</label>
+              <input type="text" name="address1" id="address1" placeholder="Enter Street Address">
+            </div>
+
+            <div class="field-group">
+              <label for="additional_address">Additional Address Information</label>
+              <input type="text" name="additional_address" id="additional_address"
+                placeholder="Enter Apartment, Floor, Suite">
+            </div>
+
+            <div class="field-group">
+              <label for="email">Email Address*</label>
+              <input type="email" name="email" id="email" placeholder="Enter Email Address">
+            </div>
+
+            <div class="field-group">
+              <label for="email_confirm">Re-type Email Address*</label>
+              <input type="email" name="email_confirm" id="email_confirm" placeholder="Re-enter Email Address">
+            </div>
+
+            <div class="field-group">
+              <label for="zip_code">Zip Code*</label>
+              <input type="text" name="zip_code" id="zip_code" placeholder="Enter Zip Code" maxlength="10">
+            </div>
+
+          </div><!-- /.col-right -->
+
+        </div><!-- /.form-columns -->
+
+        <!-- Terms checkbox -->
+        <div class="terms-row">
+          <input type="checkbox" name="agree_terms" id="agree_terms">
+          <label class="terms-label" for="agree_terms">
+            By checking this box you acknowledge and agree to all applicable terms and your
+            submission constitutes acceptance of our <span class="terms-word">Terms</span>
+            and any processes required to fulfill them and hereby relinquish the right to modify your submission.”
+          </label>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
+
+      </form>
+
+      <footer class="page-footer">
+        <p>&copy; 2023&ndash;2026, Tanya Passidore. This is a fictitious web page created solely for the purpose of
+          education and training. All products and people associated with this web page are also fictitious. Any
+          resemblance to real brands, products, or people is purely coincidental. Information provided about the product
+          is also fictitious and should not be construed to be representative of actual products on the market in a
+          similar product category.</p>
+      </footer>
+
+    </div><!-- /.form-panel -->
+  </div><!-- /.page-layout -->
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const errorBox = document.getElementById('formError');
+      errorBox.classList.remove('visible');
+      errorBox.textContent = '';
+
+      // Grab values
+      const firstName = document.getElementById('first_name').value.trim();
+      const lastName = document.getElementById('last_name').value.trim();
+      const dobMm = document.getElementById('dob_mm').value.trim();
+      const dobDd = document.getElementById('dob_dd').value.trim();
+      const dobYy = document.getElementById('dob_yy').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address1 = document.getElementById('address1').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const emailConf = document.getElementById('email_confirm').value.trim();
+      const zipCode = document.getElementById('zip_code').value.trim();
+      const agreed = document.getElementById('agree_terms').checked;
+
+      // Validation
+      if (!firstName) {
+        showError('Please enter your first name.'); return;
+      }
+      if (!lastName) {
+        showError('Please enter your last name.'); return;
+      }
+      if (!dobMm || !dobDd || !dobYy) {
+        showError('Please enter your full date of birth.'); return;
+      }
+      if (!phone) {
+        showError('Please enter your phone number.'); return;
+      }
+      if (!address1) {
+        showError('Please enter your street address.'); return;
+      }
+      if (!email) {
+        showError('Please enter your email address.'); return;
+      }
+      if (email !== emailConf) {
+        showError('Email addresses do not match. Please try again.'); return;
+      }
+      if (!zipCode) {
+        showError('Please enter your zip code.'); return;
+      }
+      if (!agreed) {
+        showError('You must agree to the Terms before submitting.'); return;
+      }
+
+      // All good — go to confirmation page
+      window.location.href = 'confirmation.html';
+    });
+
+    function showError(msg) {
+      const errorBox = document.getElementById('formError');
+      errorBox.textContent = msg;
+      errorBox.classList.add('visible');
+      errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  </script>
+
+</body>
+
+</html>

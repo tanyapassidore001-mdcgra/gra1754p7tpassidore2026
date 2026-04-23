@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello! &ndash; Submission Complete</title>
+<style>
+:root {
+--teal-dark:  #002a30;
+--teal-mid:   #004d5a;
+--teal-light: #5ec4d4;
+--white:      #ffffff;
+}
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    min-height: 100%;
+    font-family: Georgia, 'Times New Roman', serif;
+    background-color: var(--teal-mid);
+    color: var(--white);
+}
+.hero-image {
+    width: 100%;
+    display: block;
+}
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.confirm-panel {
+    background-color: var(--teal-mid);
+    padding: 36px 28px 48px;
+    text-align: center;
+}
+.confirm-heading {
+    font-size: clamp(32px, 9vw, 52px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    font-variant: small-caps;
+}
+.confirm-subhead {
+    font-size: clamp(14px, 3.5vw, 18px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+.confirm-disclaimer {
+    font-size: 12px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.8);
+    max-width: 420px;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.terms-word {
+    font-weight: 700;
+    color: var(--teal-light);
+    text-decoration: underline;
+    cursor: text;
+    user-select: text;
+    -webkit-user-select: text;
+}
+/* Footer */
+.page-footer {
+    text-align: center;
+    padding: 16px 24px 24px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+.page-footer p {
+    font-size: 9px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.page-layout {
+    display: none;
+}
+
+@media (min-width: 75em) {
+.confirm-panel {
+    padding: 44px 64px 60px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.confirm-heading {
+    font-size: 52px;
+}
+}
+
+@media (min-width: 125em) {
+.hero-image {
+    display: none;
+}
+.mobile-confirm {
+    display: none;
+}
+.page-layout {
+    display: flex;
+    min-height: 100vh;
+}
+.image-panel {
+    flex: 0 0 42%;
+    overflow: hidden;
+    background-color: var(--teal-dark);
+}
+.image-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+.confirm-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    padding: 60px 80px;
+    max-width: 100%;
+    margin: 0;
+}
+.confirm-heading {
+    font-size: 68px;
+}
+.confirm-subhead {
+    font-size: 20px;
+    margin-bottom: 60px;
+}
+.confirm-disclaimer {
+    margin: 0;
+    max-width: 480px;
+}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ MOBILE + TABLET: single image on top, text below ══ -->
+<div class="hero-image"> <img src="images/verified-tablet.png" alt="Submission verified"> </div>
+<div class="confirm-panel mobile-confirm">
+  <h1 class="confirm-heading">Submission<br>
+    Complete</h1>
+  <p class="confirm-subhead">We have what we need.</p>
+  <p class="confirm-disclaimer"> You have granted permission for all future actions specified
+	  under our <span class="terms-word">Terms &amp; Conditions</span>, including those governing subsequent engagement. The entity assume no responsibility for participant experience, condition, or result. </p>
+</div>
+
+<div class="page-layout"> 
+  
+  <div class="image-panel"> <img src="images/verified.png" alt="Submission verified"> </div>
+  
+  <div class="confirm-panel">
+    <h1 class="confirm-heading">Submission<br>
+      Complete</h1>
+    <p class="confirm-subhead">We have what we need.</p>
+   <p class="confirm-disclaimer"> You have granted permission for all future actions specified
+	  under our <span class="terms-word">Terms &amp; Conditions</span>, including those governing subsequent engagement. The entity assume no responsibility for participant experience, condition, or result. </p>
+  </div>
+</div>
+
+<footer class="page-footer">
+  <p>&copy; 2023&ndash;2026, Tanya Passidore. This is a fictitious web page created solely for the purpose of education and training. All products and people associated with this web page are also fictitious. Any resemblance to real brands, products, or people is purely coincidental.</p>
+</footer>
+</body>
+</html>
